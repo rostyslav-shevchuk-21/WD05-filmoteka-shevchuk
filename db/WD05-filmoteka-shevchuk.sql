@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Час створення: Січ 07 2019 р., 14:54
+-- Час створення: Січ 08 2019 р., 00:02
 -- Версія сервера: 5.7.16
 -- Версія PHP: 7.1.0
 
@@ -41,8 +41,7 @@ INSERT INTO `films` (`id`, `title`, `genre`, `year`) VALUES
 (1, 'Облачный атлас', 'драма', 2012),
 (2, 'Такси 2', 'комедия', 2000),
 (3, 'Аватар', 'драма', 2010),
-(4, 'Элизиум', 'фантастика', 2016),
-(8, 'Форсаж', 'триллер', 2001);
+(4, 'Элизиум', 'фантастика', 2016);
 
 --
 -- Індекси збережених таблиць
@@ -62,7 +61,7 @@ ALTER TABLE `films`
 -- AUTO_INCREMENT для таблиці `films`
 --
 ALTER TABLE `films`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

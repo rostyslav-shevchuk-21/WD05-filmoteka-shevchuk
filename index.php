@@ -8,13 +8,23 @@ if (mysqli_connect_error()) {
 	die("Ошибка к подключения к базе данных.");
 }
 
-
-// SAVE FORM DATA TO DB
-
-$resultSuccess = "";
-$resultError = "";
 $errors = array();
 
+// echo "<pre>";
+// print_r($_GET);
+// echo "</pre>";
+
+// УДАЛЕНИЕ ФИЛЬМА
+if ( @$_GET['action'] == 'delete' ) {
+	$query = "DELETE FROM films WHERE id = ' " .mysqli_real_escape_string($link, $_GET['id'] ) . "' LIMIT 1";
+	mysqli_query($link, $query);
+
+	if ( mysqli_affected_rows($link) > 0 ) {
+		$resultInfo = "<p>Фильм был удален!</p>";
+	}
+}
+
+// SAVE FORM DATA TO DB
 if (array_key_exists('newFilm', $_POST) ) {
 	
 	// ОБРАБОТКА ОШИБОК
@@ -92,36 +102,32 @@ if ( $result = mysqli_query($link, $query) ) {
 <body class="index-page">
 	<div class="container user-content section-page">
 		
-		<?php if ($resultSuccess != '') { ?>
+		<?php if (@$resultSuccess != '') { ?>
 			<div class="info-success"><?=$resultSuccess?></div>	
 		<?php } ?>
 
-		<?php if ($resultError != '') { ?>
+		<?php if (@$resultInfo != '') { ?>
+			<div class="info-notification"><?=$resultInfo?></div>	
+		<?php } ?>
+
+		<?php if (@$resultError != '') { ?>
 			<div class="error"><?=$resultError?></div>	
 		<?php } ?>
 
 
 		<div class="title-1">Фильмотека</div>
 
-	<?php
+		<?php foreach ($films as $key => $film) { ?>
 
-		foreach ($films as $key => $film) {
-			// print_r($film);
-			// echo '<br><br>';
-			// echo $film['title'];
-			// echo '<br><br>';
-			// echo $film['genre'];
-			// echo '<br><br>';
-			// echo $film['year'];
-			// echo '<br><br>';
-	?>
-
-		<div class="card mb-20">
-			<h4 class="title-4"><?=$film['title']?></h4>
-			<div class="badge"><?=$film['genre']?></div>
-			<div class="badge"><?=$film['year']?></div>
-		</div>
-	<?php } ?>
+			<div class="card mb-20">
+				<div class="card__header">
+					<h4 class="title-4"><?=$film['title']?></h4>
+					<a href="?action=delete&id=<?=$film['id']?>" class="button button--removesmall">Удалить</a>
+				</div>
+				<div class="badge"><?=$film['genre']?></div>
+				<div class="badge"><?=$film['year']?></div>
+			</div>
+		<?php } ?>
 		
 		<div class="panel-holder mt-80 mb-40">
 			<div class="title-3 mt-0">Добавить фильм</div>
