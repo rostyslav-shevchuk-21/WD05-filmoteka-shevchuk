@@ -8,8 +8,7 @@ $link = db_connect();
 require('models/films.php');
 
 
-// UPDATE FILM DATA IN DB
-if (array_key_exists('updateFilm', $_POST) ) {
+if (array_key_exists('newFilm', $_POST) ) {
 	
 	// ОБРАБОТКА ОШИБОК
 	if ($_POST['title'] == '') {
@@ -26,25 +25,20 @@ if (array_key_exists('updateFilm', $_POST) ) {
 
 	// Если ошибок нет - сохраняем фильм
 	if (empty($errors)) {
-
-		// ЗАПИСЬ ДАННЫХ В БД
-		$result = film_update($link, $_POST['title'], $_POST['genre'], $_POST['year'], $_GET['id'], $_POST['description']);
+		$result = film_new($link, $_POST['title'], $_POST['genre'], $_POST['year'], $_POST['description'] );
 	
 		if ( $result) {
-			$resultSuccess = "<p>Фильм был успешно обновлен!</p>";
+			$resultSuccess = "<p>Фильм был успешно добавлен!</p>";
 		} else {
 			$resultError = "<p>Что-то пошло не так. Добавьте фильм еще раз!</p>";
 		}
 	}
+
 }
-
-$film = get_film($link, $_GET['id']);
-
 
 include('views/head.tpl');
 include('views/notification.tpl');
-include('views/edit-film.tpl');
+include('views/new-film.tpl');
 include('views/footer.tpl');
 
 ?>
-
