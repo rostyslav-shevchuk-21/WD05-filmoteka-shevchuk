@@ -1,10 +1,10 @@
 <?php  
 
-// DB CONNECTION
 require('config.php');
 require('database.php');
 $link = db_connect();
 require('models/films.php');
+require('functions/login-functions.php');
 
 // УДАЛЕНИЕ ФИЛЬМА
 if ( @$_GET['action'] == 'delete' ) {

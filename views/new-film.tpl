@@ -24,6 +24,9 @@
 			</div>
 		</div>
 			<textarea class="textarea mb-20" name="description" placeholder="Введите описание фильма"></textarea>
+			<div class="mb-20">
+				<input type="file" name="photo" />
+			</div>
 			<input class="button" type="submit" name="newFilm" value="Добавить" />
 	</form>
 </div>

@@ -2,6 +2,7 @@
 
 require('config.php');
 
+
 if ( isset($_POST['user-submit']) ) {
 	$userName = $_POST['user-name'];
 	$userCity = $_POST['user-city'];
