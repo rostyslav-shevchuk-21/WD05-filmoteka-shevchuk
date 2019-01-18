@@ -33,12 +33,12 @@
 		?>
 
 			<?php  if ( !isAdmin() ) { ?>
-			<a href="request.php" class="admin-nav__link">Указать информацию</a>
 			<a href="login.php" class="admin-nav__link">Вход для админа</a>
 			<?php } ?>
 
 
 			<?php  if ( isAdmin() ) { ?>
+				<a href="request.php" class="admin-nav__link">Указать информацию</a>
 				<a href="logout.php" class="admin-nav__link">Выход</a>
 			<?php }  ?>
 
@@ -56,4 +56,9 @@
 		</div>
 		<?php } ?>
 
+		<?php if ( isAdmin() ) { ?>
+			<div class="mb-40">	
+				Добро пожаловать, <?=$_SESSION['user']?>!
+			</div>
+		<?php } ?>
 	
