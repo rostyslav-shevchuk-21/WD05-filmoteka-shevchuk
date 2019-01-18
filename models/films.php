@@ -20,8 +20,8 @@ function films_all($link){
 // GETTING ALL FILMS FROM DB
 function film_new($link, $title, $genre, $year, $description){
 
-
 	if ( isset($_FILES['photo']['name']) && $_FILES['photo']['tmp_name'] != ""  ) {
+
 		$fileName = $_FILES["photo"]["name"];
 		$fileTmpLoc = $_FILES["photo"]["tmp_name"];
 		$fileType =  $_FILES["photo"]["type"];
@@ -68,7 +68,7 @@ function film_new($link, $title, $genre, $year, $description){
 
 		
 	// ЗАПИСЬ ДАННЫХ В БД
-if ( isset($db_file_name) ) {
+	if ( isset($db_file_name) ) {
         $query = "INSERT INTO films (title, genre, year, description, photo) VALUES (
         '". mysqli_real_escape_string($link, $title) ."',
         '". mysqli_real_escape_string($link, $genre) ."',
@@ -77,8 +77,6 @@ if ( isset($db_file_name) ) {
         '". mysqli_real_escape_string($link, $db_file_name) ."' 
         )"; 
 
-        echo $query;
-        die();
 
     } else {
         $query = "INSERT INTO films (title, genre, year, description) VALUES (
@@ -87,10 +85,6 @@ if ( isset($db_file_name) ) {
         '". mysqli_real_escape_string($link, $year) ."',
         '". mysqli_real_escape_string($link, $description) ."',
         )"; 
-
-        echo $query;
-        die();
-
     }
 
 	if ( mysqli_query($link, $query) ) {

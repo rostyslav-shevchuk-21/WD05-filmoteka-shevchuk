@@ -3,7 +3,7 @@
 <div class="panel-holder mt-30 mb-40">
 	<div class="title-3 mt-0">Добавить фильм</div>
 	
-	<form action="new.php" method="POST">
+	<form action="new.php" method="POST" enctype="multipart/form-data">
 		
 		<?php  
 
