@@ -44,21 +44,28 @@
 
 		</div>
 		
-		<?php if ( isset($_COOKIE['user-name']) ) { ?>
-		<div class="mb-50">
-
-			<?php if ( isset($_COOKIE['user-city']) ) { ?>
-				Привет, <?=$_COOKIE['user-name']?> из <?=$_COOKIE['user-city']?>!
-			<?php } else { ?>
-				Привет, <?=$_COOKIE['user-name']?>!
-			<?php } ?>
-
-		</div>
-		<?php } ?>
 
 		<?php if ( isAdmin() ) { ?>
-			<div class="mb-40">	
-				Добро пожаловать, <?=$_SESSION['user']?>!
+			<?php if ( isset($_COOKIE['user-name']) ) { ?>
+			
+			<div class="mb-50">
+				<?php if ( isset($_COOKIE['user-city']) ) { ?>
+					Добро пожаловать, <?=$_COOKIE['user-name']?> из <?=$_COOKIE['user-city']?>!
+				<?php } else { ?>
+					Добро пожаловать, <?=$_COOKIE['user-name']?>!
+				<?php } ?>
 			</div>
+
+			<?php } else { ?>
+			<div class="mb-50">
+					Добро пожаловать, <?=$_SESSION['user']?>!
+			</div>
+			<?php } ?>
 		<?php } ?>
-	
+
+
+
+
+
+
+
